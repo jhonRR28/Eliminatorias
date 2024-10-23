@@ -3,13 +3,10 @@
 {% load static %}
 
 {% block section %}
-   <h2>
-       {{ object.first_name }} {{ object.last_name }}
-       {% if object.team_id %}
-         ( <a href="{% url "team-detail" object.team_id %}">
-             {{ object.team }}
-           </a> )
-       {% endif %}
+    <a href="{% url "team-update" object.id %}" class="btn btn-info">Edit</a>
+    <a href="{% url "team-delete" object.id %}" class="btn btn-danger">Delete</a>
+    <h2>
+       {{ object.name }}
     </h2>
     <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
    <hr>
@@ -18,7 +15,8 @@
 {% block maincontent %}
 <div>
  <div>
-     <img src="{% static object.shield.url %}" style="width:250px;height:330px" />
+    <img src="{% static object.shield.url %}" style="width:250px;height:330px" />
+    <img src="{% static object.team.url %}" style="width:250px;height:330px" />
  </div>
 </div>
 {% endblock maincontent %} 
